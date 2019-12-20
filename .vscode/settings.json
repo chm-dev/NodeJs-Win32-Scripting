@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.env.windows": {
+        "PATH": "${workspaceFolder}\\node8-portable\\;${env:path}"
+    }
+}

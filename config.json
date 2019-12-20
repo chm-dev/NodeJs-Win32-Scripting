@@ -1,0 +1,12 @@
+{
+  "debug": {
+    "workPath": "C:\\Dev\\PROJECTS\\system-node-scripts\\scripts"
+  },
+  "nodeSandbox": {
+    "sandboxPath": "C:/Dev/LocalSandbox/nodejs",
+    "templateFolder": ".template",
+    "temporaryFolder": "temp",
+    "savedFolder": "saved",
+    "vsCodePath": "C:\\Utils\\VsCode\\Code.exe"
+  }
+}

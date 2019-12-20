@@ -1,0 +1,5 @@
+cache = C:\Dev\PROJECTS\system-node-scripts\cache
+globalconfig = C:\Dev\PROJECTS\system-node-scripts\app\etc\npmrc
+globalignorefile = C:\Dev\PROJECTS\system-node-scripts\app\etc\.npmignore
+init-module = C:\Dev\PROJECTS\system-node-scripts\app\etc\.npm-init.js
+userconfig = C:\Dev\PROJECTS\system-node-scripts\app\etc\npmrc

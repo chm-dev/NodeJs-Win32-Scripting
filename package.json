@@ -1,0 +1,17 @@
+{
+  "name": "system-node-scripts",
+  "version": "0.0.1",
+  "description": "Node scripting environment for windows",
+  "main": "index.js",
+  "dependencies": {
+    "config": "^3.2.4",
+    "slash": "^3.0.0",
+    "dialog": "git+https://github.com/chm-dev/dialog.git#80c8f03"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
