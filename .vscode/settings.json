@@ -1,5 +1,7 @@
 {
     "terminal.integrated.env.windows": {
         "PATH": "${workspaceFolder}\\node8-portable\\;${env:path}"
-    }
+    },
+    "autoInstall.startOnLaunch": true,
+    "autoInstall.secure": false
 }

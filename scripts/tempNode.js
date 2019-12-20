@@ -4,7 +4,7 @@ const execFile = require('util').promisify(require('child_process').execFile);
 
 const dialog = require('dialog');
 const slash = require('slash');
-
+const copy = require('recursive-copy');
 const { debug: debugCfg, nodeSandbox: nodeSandboxCfg } = require('config'); //=
 
 const isRepl = require('./jsutils/isRepl'); //dev helper for usage with js repl in vscode

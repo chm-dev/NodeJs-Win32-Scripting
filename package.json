@@ -5,8 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "config": "^3.2.4",
-    "slash": "^3.0.0",
-    "dialog": "git+https://github.com/chm-dev/dialog.git#80c8f03"
+    "dialog": "git+https://github.com/chm-dev/dialog.git#80c8f03",
+    "recursive-copy": "^2.0.10",
+    "slash": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
