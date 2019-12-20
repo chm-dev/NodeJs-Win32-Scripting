@@ -4,16 +4,17 @@ const execFile = require('util').promisify(require('child_process').execFile);
 
 const dialog = require('dialog');
 const slash = require('slash');
-const copy = require('recursive-copy');
-const { debug: debugCfg, nodeSandbox: nodeSandboxCfg } = require('config'); //=
+const copyAll = require('recursive-copy');
+const del = require('del');
 
+const { debug: debugCfg, nodeSandbox: nodeSandboxCfg } = require('config'); //=
 const isRepl = require('./jsutils/isRepl'); //dev helper for usage with js repl in vscode
 
 const scriptPath = isRepl
   ? debugCfg.workPath
   : slash(path.normalize(__dirname)); //=
 
-const copyAll = require(path.join(scriptPath, 'jsutils', 'copyAll'));
+// const copyAll = require(path.join(scriptPath, 'jsutils', 'copyAll'));
 const removeAll = require(path.join(scriptPath, 'jsutils', 'removeAll'));
 
 const {
@@ -42,13 +43,14 @@ const time = new Date();
 
   const destPath = path.join(destFolder, folderName);
   try {
-    fs.mkdirSync(destPath, {
-      recursive: true
-    });
+    fs.mkdirSync(destPath, { recursive: true });
   } catch (e) {
     if (e.code.toString() !== 'EEXIST') throw e;
   }
-  copyAll(sourcePath, destPath);
+  await copyAll(sourcePath, destPath, {
+    overwrite: true,
+    dot: true
+  });
 
   await execFile(vsCodePath, [destPath, path.join(destPath, 'index.js'), '-w']);
   const dialog = require('dialog');
@@ -58,7 +60,7 @@ const time = new Date();
     'confirm',
     'Delete this workspace?\n\nNo will move it to saved folder. Yes deletes all fil' +
       'es.',
-    function(exitCode) {
+    async function(exitCode) {
       switch (exitCode) {
         case 6:
           fs.renameSync(destPath, path.join(savedPath, folderName), {
@@ -66,7 +68,7 @@ const time = new Date();
           });
           break;
         case 5:
-          removeAll(destPath);
+          await del[`${destPath}/**`];
           break;
         default:
           console.error('Unknown response for confirm type.');
