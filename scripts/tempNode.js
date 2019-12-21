@@ -14,8 +14,7 @@ const scriptPath = isRepl
   ? debugCfg.workPath
   : slash(path.normalize(__dirname)); //=
 
-// const copyAll = require(path.join(scriptPath, 'jsutils', 'copyAll'));
-const removeAll = require(path.join(scriptPath, 'jsutils', 'removeAll'));
+//TODO: template path should be in repo
 
 const {
   templatePath: sourcePath,
@@ -24,6 +23,7 @@ const {
   vsCodePath
 } = nodeSandboxCfg;
 
+const globalNode = process.argv.includes('global-node');
 const time = new Date();
 
 (async _ => {
@@ -47,10 +47,11 @@ const time = new Date();
   } catch (e) {
     if (e.code.toString() !== 'EEXIST') throw e;
   }
-  await copyAll(sourcePath, destPath, {
-    overwrite: true,
-    dot: true
-  });
+  if (!globalNode)
+    await copyAll(sourcePath, destPath, {
+      overwrite: true,
+      dot: true
+    });
 
   await execFile(vsCodePath, [destPath, path.join(destPath, 'index.js'), '-w']);
   const dialog = require('dialog');
