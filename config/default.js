@@ -30,7 +30,7 @@ Object.keys(values).forEach(k1 => {
     });
   }
 });
-console.log(validValues);
-console.log(values);
+// console.log(validValues);
+// console.log(values);
 
 module.exports = validValues;
